@@ -1,1 +1,5 @@
-export default function DeleteAttendeePage() {}
+export default function DeleteAttendeePage() {
+    return(
+        <div>Delete attendee page</div>
+    );
+}
