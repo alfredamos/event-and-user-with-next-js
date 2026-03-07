@@ -1,4 +1,4 @@
-import {Event} from "../generated/prisma/client";
+import {Event} from "@/generated/prisma/client"
 
 export class EventDto {
     id: string;
@@ -6,16 +6,25 @@ export class EventDto {
     description: string;
     location: string;
     date: Date;
+
+    constructor() {
+        this.id = "";
+        this.name = "";
+        this.description = "";
+        this.location = "";
+        this.date = new Date();
+    }
 }
 
 export class EventRequest {
-    id: string;
-    name: string;
-    description: string;
-    location: string;
-    date: Date;
-    createdAt: Date;
-    updatedAt: Date;
+    id!: string;
+    name!: string;
+    description!: string;
+    location!: string;
+    date!: Date;
+    createdAt!: Date;
+    updatedAt!: Date;
+
 }
 
 export function toEventDto(event: Event): EventDto {

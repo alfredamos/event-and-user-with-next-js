@@ -64,8 +64,8 @@ model Token {
   id           String    @id @default(uuid())
   accessToken  String    @unique @db.VarChar(750)
   refreshToken String    @unique @db.VarChar(750)
-  revoked      Boolean
-  expired      Boolean
+  revoked      Boolean   @default(false)
+  expired      Boolean   @default(false)
   tokenType    TokenType @default(Bearer)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt

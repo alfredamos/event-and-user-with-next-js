@@ -1,5 +1,5 @@
-import {Status, Gender} from "../generated/prisma/enums";
-import {Event, User} from "../generated/prisma/client";
+import {Gender, Status} from "@/generated/prisma/enums";
+import {User, Event} from "@/generated/prisma/client";
 
 export class AttendeeRequest {
     eventId?: string;
@@ -8,29 +8,29 @@ export class AttendeeRequest {
 }
 
 class Attendee {
-    eventId: string;
-    userId: string;
-    status: Status;
-    event: Event;
-    user: User;
-
+    eventId!: string;
+    userId!: string;
+    status!: Status;
+    event!: Event;
+    user!: User;
 }
 
 
 
 export class AttendeeResponse {
-    eventId: string;
-    userId: string;
-    status: Status;
-    eventName: string;
-    description: string;
-    location: string;
-    date: Date;
-    userName: string;
-    userEmail: string;
-    userImage: string;
-    userPhone: string;
-    gender: Gender;
+    eventId!: string;
+    userId!: string;
+    status!: Status;
+    eventName!: string;
+    description!: string;
+    location!: string;
+    date!: Date;
+    userName!: string;
+    userEmail!: string;
+    userImage!: string;
+    userPhone!: string;
+    gender!: Gender;
+
 }
 
 export function toAttendeeResponse(attendee: Attendee): AttendeeResponse {

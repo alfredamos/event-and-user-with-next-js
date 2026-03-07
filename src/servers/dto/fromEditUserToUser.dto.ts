@@ -1,7 +1,7 @@
-import {Role, Prisma} from "../generated/prisma/client";
 import {EditUserProfile} from "../validations/auth.validation";
+import {Role} from "@/generated/prisma/enums";
 
-export function fromEditUserToUser(editUserProfile: EditUserProfile, id: string): Prisma.UserModel {
+export function fromEditUserToUser(editUserProfile: EditUserProfile, id: string) {
     return{
         id,
         name: editUserProfile.name,

@@ -1,8 +1,8 @@
 import {SignupUser} from "../validations/auth.validation";
-import {Prisma} from "../generated/prisma/client";
-import {Role} from "../generated/prisma/enums";
+import {Role} from "@/generated/prisma/enums";
+import {UserCreateInput} from "@/generated/prisma/models/User";
 
-export function fromSignupUserToUser(signupUser: SignupUser): Prisma.UserCreateInput{
+export function fromSignupUserToUser(signupUser: SignupUser):UserCreateInput{
     return{
         name: signupUser.name,
         email: signupUser.email,

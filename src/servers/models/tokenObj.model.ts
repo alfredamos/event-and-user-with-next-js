@@ -1,4 +1,4 @@
-import {TokenType} from "../generated/prisma/enums";
+import {TokenType} from "../../generated/prisma/enums";
 
 export class TokenObj {
     id: string = "";

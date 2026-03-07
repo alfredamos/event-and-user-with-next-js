@@ -1,5 +1,5 @@
-import {Role, Gender} from "../generated/prisma/enums";
-import {User} from "../generated/prisma/client";
+import {Gender, Role} from "@/generated/prisma/enums";
+import {User} from "@/generated/prisma/client";
 
 
 export class UserDto {
