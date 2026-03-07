@@ -16,7 +16,7 @@ export default async function proxy(request: NextRequest) {
 
     //----> Get user session.
     const session = await authService.getUserSession();
-    console.log("In middleware, Session: ", session);
+
     //----> If the user is not authenticated, redirect to the login page.
     if (!session?.isLoggedIn) {
         return NextResponse.redirect(new URL('/login', request.url));
