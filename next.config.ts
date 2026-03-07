@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
         root: path.join(__dirname, '..'),
     },
     experimental: {
-        authInterrupts: true,
+        authInterrupts: false,
     },
     images: {
         remotePatterns: [

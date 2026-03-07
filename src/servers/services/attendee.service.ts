@@ -80,9 +80,8 @@ class AttendeeService implements IAttendeeService {
     }
 
     async getAttendeesByStatus(status: string): Promise<AttendeeResponse[]> {
-        const statusString = capitalizeFirstLetter(status.toLowerCase());
+        const statusString = capitalizeFirstLetter(status);
         const attendeeStatus = statusString as Status;
-
 
         //----> Fetch all attendees from a database.
         const attendees = await prisma.attendee.findMany({where: {status: attendeeStatus}, include: {event: true, user: true}});

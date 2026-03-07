@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {Gender} from "@/generated/prisma/enums";
+import {Gender, Role} from "@/generated/prisma/enums";
 
 export const changeUserPasswordSchema = z.object({
     email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
@@ -50,6 +50,7 @@ export const editProfileUserSchema = z.object({
     phone: z.string().min(3, {message: "Phone must be provided"}),
     image: z.string().min(3, {message: "Image must be provided"}),
     gender: z.enum(Gender),
+    role: z.enum(Role).optional(),
     password: z.string().min(3, {message: "Password must be provided"}),
 });
 

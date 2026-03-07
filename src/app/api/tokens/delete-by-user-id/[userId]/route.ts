@@ -1,15 +1,13 @@
-import {NextRequest, NextResponse} from "next/server";
-import {attendeeService} from "@/servers/services/attendee.service";
+import {tokenService} from "@/servers/services/token.service";
 import {StatusCodes} from "http-status-codes";
 import {HttpError} from "http-errors";
+import {NextRequest, NextResponse} from "next/server";
 
-type params = { params: Promise<{ userId: string}>}
-
-export async function GET(_request:NextRequest, { params }: params) {
-    //----> Fetch attendees by user id
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ userId: string}>}) {
+    //----> Delete all invalid tokens.
     try {
         const userId = (await params).userId;
-        const response = await attendeeService.getAttendeesByUserId(userId);
+        const response = await tokenService.deleteInvalidTokensByUserId(userId);
         return Response.json(response, { status: StatusCodes.OK });
     }catch (error) {
         const httpError = error as HttpError;

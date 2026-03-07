@@ -8,7 +8,7 @@ import {ResponseMessage} from "../utils/responseMessage.util";
 import {
     ChangeUserPassword,
     changeUserPasswordSchema,
-    ChangeUserRole,
+    ChangeUserRole, changeUserRoleSchema,
     editProfileUserSchema,
     EditUserProfile,
     LoginUser,
@@ -60,7 +60,7 @@ class AuthService implements IAuthService {
 
     async changeUserRole(request: ChangeUserRole): Promise<ResponseMessage> {
         //----> Validate inputs.
-        if (!validateWithZodSchema(changeUserPasswordSchema, request)){
+        if (!validateWithZodSchema(changeUserRoleSchema, request)){
             throw catchError(StatusCodes.BAD_REQUEST, "Invalid inputs");
         }
 
@@ -101,6 +101,7 @@ class AuthService implements IAuthService {
 
         //----> Map edit user profile request to user update.
         request.password = user!.password;
+        request.role = user!.role;
         const userToEdit = fromEditUserToUser(request, user!.id);
 
         //----> Save the changes in the db.
@@ -140,8 +141,8 @@ class AuthService implements IAuthService {
         //----> Get user session.
        const session = await this.getUserSession();
 
-       //----> Delete all invalid tokens associated with this user.
-       await tokenService.deleteInvalidTokensByUserId(session.id);
+       //----> Revoke all valid tokens associated with this user.
+       await tokenService.revokeAllValidTokensByUserId(session.id);
 
        //----> Delete access-token-cookie and refresh-token-cookie.
        await this.deleteCookie(AuthParam.accessTokenName, AuthParam.accessTokenPath);
@@ -215,7 +216,7 @@ class AuthService implements IAuthService {
 
     async getUserSession(): Promise<Session>{
         //----> Get cookie.
-       const token = await this.getCookie(AuthParam.accessTokenPath);
+       const token = await this.getCookie(AuthParam.accessTokenName);
 
        //----> Validate token.
        const tokenJwt = this.validateToken(token);
@@ -252,7 +253,7 @@ class AuthService implements IAuthService {
         }
 
         //----> Validate token.
-       const jwtPayload =  jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+       const jwtPayload =  jwt.verify(token, process.env.JWT_TOKEN_KEY!) as JwtPayload;
 
         //----> Check if token is expired.
         if(!jwtPayload){
@@ -264,7 +265,7 @@ class AuthService implements IAuthService {
     }
 
     private generateToken(tokenJwt: TokenJwt, expiresIn: number){
-        const token = jwt.sign(tokenJwt, process.env.JWT_SECRET!, {expiresIn});
+        const token = jwt.sign(tokenJwt, process.env.JWT_TOKEN_KEY!, {expiresIn});
 
         //----> Check if token is valid.
         if(!token){
@@ -318,7 +319,7 @@ class AuthService implements IAuthService {
     private async getCookie(cookieName: string): Promise<string>{
         //----> Initialize cookie.
         const cookieStore  = await cookies();
-        const cookieValue = cookieStore.get(cookieName)?.value;
+        const cookieValue = cookieStore.get(cookieName)?.value as string;
 
         //----> Check if cookie exists.
         if(!cookieValue){
@@ -344,7 +345,8 @@ class AuthService implements IAuthService {
 
     private async deleteCookie(cookieName: string, cookiePath: string){
         const cookieStore  = await cookies();
-        cookieStore.delete(cookieName)
+        cookieStore.delete(cookieName);
+        await this.setCookie(cookieName, "", cookiePath, 0);
     }
 
 }
