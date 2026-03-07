@@ -9,6 +9,7 @@ import {attendeeSchema} from "@/servers/validations/attendee.validation";
 import catchError from "http-errors";
 import {StatusCodes} from "http-status-codes";
 import {prisma} from "@/servers/db/prisma";
+import {capitalizeFirstLetter} from "@/servers/utils/capitalizeFirstLetter.util";
 
 class AttendeeService implements IAttendeeService {
     async createAttendee(request: AttendeeUncheckedCreateInput): Promise<AttendeeResponse> {
@@ -78,9 +79,13 @@ class AttendeeService implements IAttendeeService {
         return attendees.map(toAttendeeResponse)
     }
 
-    async getAttendeesByStatus(status: Status): Promise<AttendeeResponse[]> {
+    async getAttendeesByStatus(status: string): Promise<AttendeeResponse[]> {
+        const statusString = capitalizeFirstLetter(status.toLowerCase());
+        const attendeeStatus = statusString as Status;
+
+
         //----> Fetch all attendees from a database.
-        const attendees = await prisma.attendee.findMany({where: {status}, include: {event: true, user: true}});
+        const attendees = await prisma.attendee.findMany({where: {status: attendeeStatus}, include: {event: true, user: true}});
 
         //----> Send back response.
         return attendees.map(toAttendeeResponse)
