@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Remove debugging console.log.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components.json.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="112" />
+    <option name="cachedIndexableFilesCount" value="113" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -139,6 +142,7 @@
       <workItem from="1772813607450" duration="49000" />
       <workItem from="1772813660184" duration="17956000" />
       <workItem from="1772874666224" duration="24664000" />
+      <workItem from="1772967982300" duration="1443000" />
     </task>
     <task id="LOCAL-00001" summary="scaffold a next-js for managing users, events and attendees.">
       <option name="closed" value="true" />
