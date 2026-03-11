@@ -1,0 +1,67 @@
+"use client"
+
+import {InputWithLabel} from "@/components/form-elements/InputWithLabel";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {Form} from "@/components/ui/form";
+import {LoginUser, loginUserSchema} from "@/servers/validations/auth.validation";
+import {loginUserAction} from "@/app/actions/auth.action";
+import {Button} from "@/components/ui/button";
+import {redirect} from "next/navigation";
+import {useAuthContext} from "@/hooks/useAuthContext";
+import {useLocalStorage} from "@/hooks/useLocalStorage";
+import {LocalStorageParam} from "@/servers/utils/LocalStorageParam";
+import {Separator} from "@/components/ui/separator";
+import {UserModel} from "@/servers/models/user.model";
+
+export default function LoginForm(){
+    const {setAuthSession} = useAuthContext();
+    const {setLocalStorage} = useLocalStorage<UserModel>()
+
+    async function onSubmit(values: LoginUser) {
+        const response = await loginUserAction(values);
+
+        if (!response ) {
+            throw response;
+        }
+
+        console.log("In login-form, response", response);
+
+        //----> Set auth context.
+        setAuthSession(response);
+
+        //----> Set local-storage.
+        setLocalStorage(LocalStorageParam.authSession, response as unknown as UserModel);
+
+
+        redirect("/")
+    }
+
+    const defaultValues: LoginUser = {
+        email: "",
+        password: "",
+    }
+
+    const form = useForm<LoginUser>({
+        resolver: zodResolver(loginUserSchema),
+        defaultValues,
+    });
+
+    return (
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="bg-gray-50 dark:text-black dark:bg-black text-slate-800 max-w-sm items-center mx-auto rounded-xl shadow-xl py-6 px-10 mt-2">
+                <h4 className="font-bold text-slate-800 text-center text-xl mb-2 dark:text-white">
+                    Login Form
+                </h4>
+                <Separator className="mt-4 mb-4"/>
+                <InputWithLabel<LoginUser> fieldTitle="Email" type="email" nameInSchema="email" className={`mb-2}`}/>
+                <InputWithLabel<LoginUser> fieldTitle="Password" type="password" nameInSchema="password" className="mb-2 dark:text-white" />
+                <Separator className="mt-4"/>
+                <div className="flex items-center justify-between gap-2 mt-4">
+                    <Button type="submit" size="lg" className="flex-1 mb-4" variant="indigo">Save</Button>
+                    <Button type="button" size="lg" className="flex-1 mb-4" variant="rose" onClick={() => form.reset(defaultValues)}>Reset</Button>
+                </div>
+            </form>
+        </Form>
+    )
+}

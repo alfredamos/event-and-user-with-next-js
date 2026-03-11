@@ -11,11 +11,13 @@ import {ResponseMessage} from "@/servers/utils/responseMessage.util";
 import {UserDto} from "@/servers/dto/user.dto";
 import {Session} from "@/servers/models/session.model";
 import {authService} from "@/servers/services/auth.service";
+import {redirect} from "next/navigation";
 
 export async function changeUserPasswordAction(request: ChangeUserPassword):Promise<ResponseMessage>{
     //----> Change user password
     try{
-        return await authService.changeUserPassword(request);
+        await authService.changeUserPassword(request);
+        redirect("/")
     }catch (error){
         throw error;
     }
@@ -31,10 +33,11 @@ export async function changeUserRoleAction(request: ChangeUserRole):Promise<Resp
     }
 }
 
-export async function editUserProfileAction(request: EditUserProfile): Promise<ResponseMessage>{
+export async function editUserProfileAction(request: EditUserProfile){
     //----> Edit user profile
     try{
-        return await authService.editUserProfile(request);
+        await authService.editUserProfile(request);
+        redirect("/");
     }catch (error){
         throw error;
     }
@@ -49,6 +52,15 @@ export async function getCurrentUserAction():Promise<UserDto>{
    }
 }
 
+export async function getUserSessionAction():Promise<Session>{
+    //----> Get user session
+    try {
+        return await authService.getUserSession();
+    }catch (error){
+        throw error;
+    }
+}
+
 export async function loginUserAction(request: LoginUser): Promise<Session>{
   //----> Login user
     try{
@@ -58,10 +70,11 @@ export async function loginUserAction(request: LoginUser): Promise<Session>{
     }
 }
 
-export async function logoutUserAction(): Promise<Session>{
+export async function logoutUserAction(){
    //----> Logout user
     try{
-        return await authService.logoutUser();
+        await authService.logoutUser();
+        redirect('/login')
     }catch (error){
         throw error;
     }
@@ -76,10 +89,12 @@ export async function refreshUserTokenAction(): Promise<Session>{
     }
 }
 
-export async function signupUserAction(request: SignupUser): Promise<ResponseMessage>{
+export async function signupUserAction(request: SignupUser){
+    console.log("In signupUser, request : ", request);
     //----> Signup user
     try{
-        return await authService.signupUser(request);
+        await authService.signupUser(request);
+        redirect('/login')
     }catch (error){
         throw error;
     }

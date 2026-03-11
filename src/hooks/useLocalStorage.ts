@@ -10,8 +10,7 @@ export function useLocalStorage<T>(){
     }
 
     const getLocalStorage = (key: string) => {
-        const value =  ls.get<T>(key);
-        return value;
+        return ls.get<T>(key);
     }
 
     const removeLocalStorage = (key: string) => {

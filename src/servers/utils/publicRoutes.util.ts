@@ -2,6 +2,7 @@ import {Request} from "express";
 import {NextRequest} from "next/server";
 
 const routes = [
+    "/",
     "/api/login",
     "/api/logout",
     "/api/signup",
