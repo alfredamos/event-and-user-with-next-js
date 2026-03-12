@@ -1,20 +1,22 @@
 "use server"
 
 import {userService} from "@/servers/services/user.service";
+import {redirect} from "next/navigation";
 
 export async function deleteUserByIdAction(id: string){
     //----> Delete user by id.
     try {
-        return await userService.deleteUserById(id);
+        await userService.deleteUserById(id);
+        redirect("/users")
     }catch (error) {
         throw error
     }
 }
 
-export async function getAllUsersAction(){
+export async function getAllUsersAction(query?: string){
     //----> Retrieve all users.
     try {
-        return await userService.getAllUsers();
+        return await userService.getAllUsers(query);
     }catch (error) {
         throw error
     }

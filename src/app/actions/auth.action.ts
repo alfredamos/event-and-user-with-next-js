@@ -27,7 +27,8 @@ export async function changeUserPasswordAction(request: ChangeUserPassword):Prom
 export async function changeUserRoleAction(request: ChangeUserRole):Promise<ResponseMessage>{
    //----> Change user role
     try {
-       return await authService.changeUserRole(request);
+       await authService.changeUserRole(request);
+       redirect("/users");
    }catch (error){
         throw error;
     }

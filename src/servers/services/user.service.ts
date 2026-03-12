@@ -17,12 +17,20 @@ class UserService implements IUserService {
         return new ResponseMessage("User deleted successfully!", "success", StatusCodes.OK);
     }
 
-    async getAllUsers(): Promise<UserDto[]> {
+    async getAllUsers(query?: string): Promise<UserDto[]> {
       //----> Fetch all users from a database
-       const users = await prisma.user.findMany({});
+        if(query){
+            return ((await prisma.user.findMany({where: {
+                    OR:[
+                        {email : {contains : query}},
+                        {name : {contains : query}},
+                        {phone : {contains : query}},
+                    ],}
+            })).map(user => fromUserToUserDto(user)));
+        }
 
-       //----> Send back response.
-       return users.map(fromUserToUserDto);
+        //----> Fetch all authors.
+        return ((await prisma.user.findMany({})).map(user => fromUserToUserDto(user)));
     }
 
     async getUserById(id: string): Promise<UserDto> {

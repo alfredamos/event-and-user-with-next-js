@@ -3,6 +3,6 @@ import {ResponseMessage} from "@/servers/utils/responseMessage.util";
 
 export interface IUserService {
     deleteUserById(id: string): Promise<ResponseMessage>;
-    getAllUsers(): Promise<UserDto[]>;
+    getAllUsers(query?: string): Promise<UserDto[]>;
     getUserById(id: string): Promise<UserDto>;
 }

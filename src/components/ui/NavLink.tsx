@@ -6,13 +6,12 @@ import {useAuthContext} from "@/hooks/useAuthContext";
 import {useLocalStorage} from "@/hooks/useLocalStorage";
 import axios from "axios";
 import {StatusCodes} from "http-status-codes";
-import {refreshUserTokenAction as refresTokenOfUser} from "@/app/actions/auth.action";
 
 import {LocalStorageParam} from "@/servers/utils/LocalStorageParam";
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
-import {UserModel} from "@/servers/models/user.model";
 import {CustomError} from "@/servers/utils/CustomError.util";
+import {Session} from "@/servers/models/session.model";
 
 type Props = {
     href: string;
@@ -21,7 +20,7 @@ type Props = {
 
 export function NavLink({href, label}: Props) {
     const {setAuthSession : setUserResponse} = useAuthContext();
-    const {setLocalStorage} = useLocalStorage<UserModel>();
+    const {setLocalStorage} = useLocalStorage<Session>();
     const [isNotRefresh, setIsNotRefresh] = useState(false)
 
     const router = useRouter();
@@ -30,16 +29,15 @@ export function NavLink({href, label}: Props) {
         const checkRefresh = async () => {
             setIsNotRefresh(href !== "/refresh")
         }
-        checkRefresh().then().catch(error => console.error(error));
+        checkRefresh().then(() => console.log("Token refreshed!")).catch(error => console.error(error));
     },[href])
 
     const refreshUserTokenAction = async () => {
         const response = await axios.post("/api/auth/refresh", {});
-        //const response = await refresTokenOfUser();
 
         console.log("In refresh-user-token, response : ", response?.data);
 
-        if (response.status !== StatusCodes.OK) throw new CustomError("Server Error", "User token cannot be refreshed", StatusCodes.INTERNAL_SERVER_ERROR);
+        if (response?.status !== StatusCodes.OK) throw new CustomError("Server Error", "User token cannot be refreshed", StatusCodes.INTERNAL_SERVER_ERROR);
 
         setUserResponse(response.data);
         setLocalStorage(LocalStorageParam.authSession, response.data);
