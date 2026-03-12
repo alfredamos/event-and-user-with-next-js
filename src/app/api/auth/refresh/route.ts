@@ -7,6 +7,7 @@ export async function POST() {
     //----> Refresh user token.
     try {
         const response = await authService.refreshUserToken();
+
         return NextResponse.json(response, {status: StatusCodes.OK});
     }catch (error) {
         const httpError = error as HttpError;

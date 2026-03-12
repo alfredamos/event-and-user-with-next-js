@@ -1,6 +1,6 @@
 "use client"
 
-import {NavigationMenuItem, NavigationMenuLink, NavigationMenuList} from "@/components/ui/navigation-menu";
+import {NavigationMenuItem, NavigationMenuList} from "@/components/ui/navigation-menu";
 import {Button} from "@/components/ui/button";
 import {logoutUserAction as logoutUser} from "@/app/actions/auth.action";
 import {MenuDropdown} from "@/components/ui/MenuDropdown";

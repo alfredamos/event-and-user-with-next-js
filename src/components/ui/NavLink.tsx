@@ -6,6 +6,7 @@ import {useAuthContext} from "@/hooks/useAuthContext";
 import {useLocalStorage} from "@/hooks/useLocalStorage";
 import axios from "axios";
 import {StatusCodes} from "http-status-codes";
+import {refreshUserTokenAction as refresTokenOfUser} from "@/app/actions/auth.action";
 
 import {LocalStorageParam} from "@/servers/utils/LocalStorageParam";
 import {useRouter} from "next/navigation";
@@ -34,6 +35,9 @@ export function NavLink({href, label}: Props) {
 
     const refreshUserTokenAction = async () => {
         const response = await axios.post("/api/auth/refresh", {});
+        //const response = await refresTokenOfUser();
+
+        console.log("In refresh-user-token, response : ", response?.data);
 
         if (response.status !== StatusCodes.OK) throw new CustomError("Server Error", "User token cannot be refreshed", StatusCodes.INTERNAL_SERVER_ERROR);
 
@@ -48,11 +52,11 @@ export function NavLink({href, label}: Props) {
             {isNotRefresh ?
                 (
                     <DropdownMenuItem key={label}>
-                        <Link href={href} className="py-2 px-4 text-sm font-medium text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition duration-300 w-full">{label}</Link>
+                        <Link href={href} className="py-2 px-4 text-sm font-medium text-gray-600 bg-gray-200 rounded hover:bg-gray-300 hover:font-semibold  dark:hover:bg-gray-900 hover:text-gray-200 transition duration-300 w-full">{label}</Link>
                     </DropdownMenuItem>
                 ) : (
                     <DropdownMenuItem key={label}>
-                        <form action={refreshUserTokenAction} className="py-2 px-4 text-sm font-medium text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition duration-300 w-full">
+                        <form action={refreshUserTokenAction} className="py-2 px-4 text-sm font-medium text-gray-600 bg-gray-200 rounded hover:bg-gray-300 hover:font-semibold  dark:hover:bg-gray-900 hover:text-gray-200 transition duration-300 w-full">
                             <button type="submit">{label}</button>
                         </form>
                     </DropdownMenuItem>

@@ -1,14 +1,10 @@
-export type NavLinkType = {
-    href: string;
-    label: string;
-}
+import {NavLinkType} from "@/app/settingItems";
 
 export const settingItems = [
     { href: '/change-password', label: 'Change Password' },
     { href: '/edit-profile', label: 'Edit Profile' },
     { href: '/', label: 'Home' },
     { href: '/refresh', label: 'Refresh' },
-    { href: '/tickets', label: 'Tickets' },
 ];
 
 export function getAllSettingItems(email: string, isAdmin: boolean) {
