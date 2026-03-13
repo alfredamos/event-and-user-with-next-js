@@ -12,7 +12,7 @@ export default function SearchBar({path}: Prop) {
                 <input
                     type="search"
                     name="query"
-                    className="border-solid border-2 border-gray-300  focus:border-solid focus:border-indigo-600 focus:outline-none text-black w-full rounded-lg p-3 m-2"
+                    className="border-solid border border-gray-700  focus:border-solid focus:border-indigo-600 focus:outline-none dark:text-white text-black w-full rounded-lg p-3 m-2"
                 />
                 <Button variant="indigo" size="xlg" type="submit">
                     Search

@@ -1,13 +1,17 @@
 "use server"
 
 import {eventService} from "@/servers/services/event.service";
-import {EventCreateInput} from "@/generated/prisma/models/Event";
-import {Event} from "@/generated/prisma/client";
+import {EventCreateInput, EventModel} from "@/generated/prisma/models/Event";
+//import {Event} from "@/generated/prisma/client";
+import {Event} from "@/servers/validations/event.validation"
+import {redirect} from "next/navigation";
 
 export async function createEventAction(request: EventCreateInput){
+    console.log("In createEventAction, request : ", request);
     //----> Create a new event.
     try {
-        return await eventService.createEvent(request);
+        await eventService.createEvent(request);
+        redirect("/events")
     }catch (error) {
         throw error
     }
@@ -16,25 +20,27 @@ export async function createEventAction(request: EventCreateInput){
 export async function deleteEventByIdAction(id: string){
     //----> Delete an event by id.
     try {
-        return await eventService.deleteEventById(id);
+        await eventService.deleteEventById(id);
+        redirect("/events")
     }catch (error) {
         throw error
     }
 }
 
-export async function editEventByIdAction(id: string, request: Event){
+export async function editEventByIdAction(request: Event){
     //----> Edit an event by id.
     try {
-        return await eventService.editEventById(id, request);
+        await eventService.editEventById(request.id as string, request as unknown as EventModel);
+        redirect("/events")
     }catch (error) {
         throw error
     }
 }
 
-export async function getAllEventsAction(){
+export async function getAllEventsAction(query?: string){
     //----> Retrieve all events.
     try {
-        return await eventService.getAllEvents();
+        return await eventService.getAllEvents(query);
     }catch (error) {
         throw error
     }

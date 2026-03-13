@@ -8,6 +8,7 @@ import {eventSchema} from "../validations/event.validation";
 import catchError from "http-errors";
 import {StatusCodes} from "http-status-codes";
 import {prisma} from "@/servers/db/prisma";
+import {fromUserToUserDto} from "@/servers/dto/user.dto";
 
 class EventService implements IEventService {
 
@@ -16,6 +17,9 @@ class EventService implements IEventService {
         if (!validateWithZodSchema(eventSchema, request)) {
             throw catchError(StatusCodes.BAD_REQUEST, "Invalid event inputs!");
         }
+
+        //----> convert a date to a date object.
+        request.date = new Date(request.date);
 
         //----> create event in a database.
         const event = await prisma.event.create({data: request});
@@ -39,6 +43,9 @@ class EventService implements IEventService {
         //----> check if event exists.
         await this.getOneEvent(id);
 
+        //----> convert a date to a date object.
+        event.date = new Date(event.date);
+
         //----> update event in a database.
         await prisma.event.update({where: {id}, data: event});
 
@@ -46,12 +53,20 @@ class EventService implements IEventService {
         return new ResponseMessage("Event updated successfully!", "success", StatusCodes.OK);
     }
 
-    async getAllEvents(): Promise<EventDto[]> {
-        //----> fetch all events from a database.
-        const events = await prisma.event.findMany({});
+    async getAllEvents(query?: string): Promise<EventDto[]> {
+        //----> Fetch all users from a database
+        if(query){
+            return ((await prisma.event.findMany({where: {
+                    OR:[
+                        {description : {contains : query}},
+                        {location : {contains : query}},
+                        {name : {contains : query}},
+                    ],}
+            })).map(toEventDto));
+        }
 
-        //----> send back response.
-        return events.map(toEventDto);
+        //----> Fetch all authors.
+        return ((await prisma.event.findMany({})).map(toEventDto));
     }
 
     async getEventById(id: string): Promise<EventDto> {

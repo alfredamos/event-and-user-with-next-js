@@ -45,7 +45,7 @@ export default function SignInAndOut() {
                   </NavigationMenuItem>) : ""}
 
                    <NavigationMenuItem className="hover:bg-black hover:text-white focus:outline-none gap-2 px-4 pt-1 pb-2 rounded-md">
-                       <MenuDropdown items={getAllSettingItems(authSession?.email as string, isAdmin)} title="Settings" subTitle="My Account" />
+                       <MenuDropdown items={getAllSettingItems(authSession?.id as string, isAdmin)} title="Settings" subTitle="My Account" />
 
                    </NavigationMenuItem>
                    <NavigationMenuItem>

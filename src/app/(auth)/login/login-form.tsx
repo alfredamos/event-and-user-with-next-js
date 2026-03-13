@@ -19,6 +19,7 @@ export default function LoginForm(){
     const {setLocalStorage} = useLocalStorage<UserModel>()
 
     async function onSubmit(values: LoginUser) {
+        console.log("In login-form, values", values);
         const response = await loginUserAction(values);
 
         if (!response ) {
