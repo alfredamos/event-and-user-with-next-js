@@ -2,8 +2,10 @@
 
 import {attendeeService} from "@/servers/services/attendee.service";
 import {AttendeeUncheckedCreateInput, AttendeeUncheckedUpdateInput} from "@/generated/prisma/models/Attendee";
-import {Attendee} from "@/generated/prisma/client";
 import {redirect} from "next/navigation";
+import {getUserSessionAction} from "@/app/actions/auth.action";
+import catchError from "http-errors";
+import {StatusCodes} from "http-status-codes";
 
 export async function createAttendeesAction(request: AttendeeUncheckedCreateInput){
     //----> Create a new attendee.
@@ -16,18 +18,27 @@ export async function createAttendeesAction(request: AttendeeUncheckedCreateInpu
 
 export async function deleteAttendeesByIdAction(eventId: string, userId: string){
     //----> Delete an attendee by id.
+    const session = await getUserSessionAction();
+
+    if (!session?.isLoggedIn) throw catchError(StatusCodes.UNAUTHORIZED, "You are not logged in!");
     try {
-        return await attendeeService.deleteAttendeeById(eventId, userId);
+        await attendeeService.deleteAttendeeById(eventId, userId);
+        redirect(session.isAdmin ? "/attendees" : `/attendees/by-user-id/${userId}`)
     }catch (error) {
         throw error
     }
 }
 
 export async function editAttendeesByIdAction(eventId: string, userId: string, request: AttendeeUncheckedUpdateInput){
+    //----> Delete an attendee by id.
+    const session = await getUserSessionAction();
+
+    if (!session?.isLoggedIn) throw catchError(StatusCodes.UNAUTHORIZED, "You are not logged in!");
+
     //----> Edit an attendee by id.
     try {
         await attendeeService.editAttendeeById(eventId, userId, request);
-        redirect("/")
+        redirect(session.isAdmin ? "/attendees" : `/attendees/by-user-id/${userId}`)
     }catch (error) {
         throw error
     }

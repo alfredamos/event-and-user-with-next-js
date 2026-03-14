@@ -3,6 +3,7 @@ import {Role} from "@/generated/prisma/enums";
 import {UserUncheckedUpdateInput} from "@/generated/prisma/models/User";
 
 export function fromEditUserToUser(editUserProfile: EditUserProfile, id: string): UserUncheckedUpdateInput {
+
     return{
         id,
         name: editUserProfile.name,

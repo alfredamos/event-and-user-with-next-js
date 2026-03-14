@@ -20,7 +20,7 @@ export function AttendeeForm({action, attendee}: Props) {
     async function onSubmit(values: Attendee) {
         console.log("In attendee-form, values", values);
         await action(values.eventId, values.userId, values);
-        redirect("/")
+        router.refresh();
     }
 
     const onError: SubmitHandler<FieldErrors<Event>> = (errors) => {

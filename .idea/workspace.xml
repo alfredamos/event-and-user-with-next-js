@@ -4,31 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Add events with crud functionalities in frontend.">
-      <change afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/events/EventUpdateForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Add alert and alert-dialog.">
+      <change afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/AttendeeCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/actions/attendee.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/actions/attendee.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/actions/event.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/actions/event.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/adminItems.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/adminItems.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/AttendeeTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/AttendeeTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/DeleteAttendeeBurton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/DeleteAttendeeBurton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/delete/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/add/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/EventForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventCreateForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/[id]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/[id]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servers/dto/attendeeRequest.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/dto/attendeeRequest.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/dto/event.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/dto/event.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servers/dto/fromEditUserToUser.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/dto/fromEditUserToUser.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/dto/fromSignupUserToUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/dto/fromSignupUserToUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/services/attendee.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/services/attendee.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/services/event.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/services/event.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/validations/attendee.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/validations/attendee.validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/validations/event.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/validations/event.validation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +167,7 @@
       <workItem from="1773233846452" duration="9596000" />
       <workItem from="1773306206146" duration="33173000" />
       <workItem from="1773391063438" duration="2459000" />
-      <workItem from="1773408143082" duration="16893000" />
+      <workItem from="1773408143082" duration="19060000" />
     </task>
     <task id="LOCAL-00001" summary="scaffold a next-js for managing users, events and attendees.">
       <option name="closed" value="true" />
@@ -290,7 +273,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773429213291</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add attendee form, create and update attendee in from end">
+      <option name="closed" value="true" />
+      <created>1773450641184</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1773450641184</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add alert and alert-dialog.">
+      <option name="closed" value="true" />
+      <created>1773450678143</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1773450678143</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +309,10 @@
     <MESSAGE value="Add system info." />
     <MESSAGE value="Add user-detail and user-delete and get all users functionalities." />
     <MESSAGE value="Add events with crud functionalities in frontend." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add events with crud functionalities in frontend." />
+    <MESSAGE value="Add attendee form, create and update attendee in fromtend" />
+    <MESSAGE value="Add attendee form, create and update attendee in from end" />
+    <MESSAGE value="Add alert and alert-dialog." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add alert and alert-dialog." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -14,6 +14,7 @@ export class AttendeeResponse {
     eventId!: string;
     userId!: string;
     status!: Status;
+    eventImage!: string;
     eventName!: string;
     description!: string;
     location!: string;
@@ -31,6 +32,7 @@ export function toAttendeeResponse(attendee: Attendee): AttendeeResponse {
         eventId: attendee.eventId,
         userId: attendee.userId,
         status: attendee.status,
+        eventImage: attendee.event.image,
         eventName: attendee.event.name,
         description: attendee.event.description,
         location: attendee.event.location,
