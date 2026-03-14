@@ -1,8 +1,8 @@
 import {EditUserProfile} from "../validations/auth.validation";
 import {Role} from "@/generated/prisma/enums";
-import {User} from "@/generated/prisma/client";
+import {UserUncheckedUpdateInput} from "@/generated/prisma/models/User";
 
-export function fromEditUserToUser(editUserProfile: EditUserProfile, id: string): User {
+export function fromEditUserToUser(editUserProfile: EditUserProfile, id: string): UserUncheckedUpdateInput {
     return{
         id,
         name: editUserProfile.name,
@@ -12,7 +12,5 @@ export function fromEditUserToUser(editUserProfile: EditUserProfile, id: string)
         role: editUserProfile.role as Role,
         gender: editUserProfile.gender,
         image: editUserProfile.image,
-        createdAt: new Date(),
-        updatedAt: new Date()
     }
 }

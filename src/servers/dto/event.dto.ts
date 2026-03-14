@@ -16,18 +16,6 @@ export class EventDto {
         this.date = "";
     }
 }
-
-export class EventRequest {
-    id!: string;
-    name!: string;
-    description!: string;
-    location!: string;
-    date!: Date;
-    createdAt!: Date;
-    updatedAt!: Date;
-
-}
-
 export function toEventDto(event: Event): EventDto {
     return{
         id: event.id,

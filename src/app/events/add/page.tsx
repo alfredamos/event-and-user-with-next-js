@@ -1,11 +1,9 @@
-import {EventForm} from "@/app/events/EventForm";
-import {Event} from "@/servers/validations/event.validation"
+import {EventCreate} from "@/servers/validations/event.validation"
 import {createEventAction} from "@/app/actions/event.action";
-import { v4 as uuidv4 } from 'uuid';
+import {EventCreateForm} from "@/app/events/EventCreateForm";
 
 export default function AddEventPage() {
-    const event: Event = {
-        id: uuidv4(),
+    const event: EventCreate = {
         name: "",
         description: "",
         image: "",
@@ -14,6 +12,6 @@ export default function AddEventPage() {
     }
 
     return(
-        <EventForm event={event} formLabel="Create" action={createEventAction}/>
+        <EventCreateForm event={event} formLabel="Create" action={createEventAction}/>
     );
 }

@@ -11,7 +11,5 @@ export function fromSignupUserToUser(signupUser: SignupUser):UserCreateInput{
         role: Role.User,
         gender: signupUser.gender,
         image: signupUser.image,
-        createdAt: new Date(),
-        updatedAt: new Date()
     }
 }

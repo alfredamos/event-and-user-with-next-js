@@ -1,9 +1,7 @@
 "use server"
 
 import {eventService} from "@/servers/services/event.service";
-import {EventCreateInput, EventModel} from "@/generated/prisma/models/Event";
-//import {Event} from "@/generated/prisma/client";
-import {Event} from "@/servers/validations/event.validation"
+import {EventCreateInput, EventUncheckedUpdateInput} from "@/generated/prisma/models/Event";
 import {redirect} from "next/navigation";
 
 export async function createEventAction(request: EventCreateInput){
@@ -27,10 +25,10 @@ export async function deleteEventByIdAction(id: string){
     }
 }
 
-export async function editEventByIdAction(request: Event){
+export async function editEventByIdAction(id: string, request: EventUncheckedUpdateInput){
     //----> Edit an event by id.
     try {
-        await eventService.editEventById(request.id as string, request as unknown as EventModel);
+        await eventService.editEventById(id, request);
         redirect("/events")
     }catch (error) {
         throw error

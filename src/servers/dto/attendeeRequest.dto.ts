@@ -1,12 +1,5 @@
 import {Gender, Status} from "@/generated/prisma/enums";
 import {User, Event} from "@/generated/prisma/client";
-
-export class AttendeeRequest {
-    eventId?: string;
-    userId?: string;
-    status?: Status
-}
-
 class Attendee {
     eventId!: string;
     userId!: string;
@@ -49,5 +42,3 @@ export function toAttendeeResponse(attendee: Attendee): AttendeeResponse {
         gender: attendee.user.gender
     }
 }
-
-export function toAttendeeResponses(attendees: Attendee[]): AttendeeResponse[] {return attendees.map(toAttendeeResponse)}

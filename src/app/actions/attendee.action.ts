@@ -1,8 +1,9 @@
 "use server"
 
 import {attendeeService} from "@/servers/services/attendee.service";
-import {AttendeeUncheckedCreateInput} from "@/generated/prisma/models/Attendee";
+import {AttendeeUncheckedCreateInput, AttendeeUncheckedUpdateInput} from "@/generated/prisma/models/Attendee";
 import {Attendee} from "@/generated/prisma/client";
+import {redirect} from "next/navigation";
 
 export async function createAttendeesAction(request: AttendeeUncheckedCreateInput){
     //----> Create a new attendee.
@@ -22,10 +23,11 @@ export async function deleteAttendeesByIdAction(eventId: string, userId: string)
     }
 }
 
-export async function editAttendeesByIdAction(eventId: string, userId: string, request: Attendee){
+export async function editAttendeesByIdAction(eventId: string, userId: string, request: AttendeeUncheckedUpdateInput){
     //----> Edit an attendee by id.
     try {
-        return await attendeeService.editAttendeeById(eventId, userId, request);
+        await attendeeService.editAttendeeById(eventId, userId, request);
+        redirect("/")
     }catch (error) {
         throw error
     }

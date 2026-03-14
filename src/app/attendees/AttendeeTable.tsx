@@ -20,16 +20,14 @@ export function AttendeeTable({attendees}: Props) {
         <div className="mt-10 max-w-sm md:max-w-2xl mx-auto">
             <Separator className="mb-4 mt-2"/>
             <div className="flex items-center justify-between">
-                <span className="font-bold">Add New Event</span>
+                <span className="font-bold">Add New Attendee</span>
                 <Button asChild size="lg" >
-                    <Link href="/attendee/add" className="font-bold">Add</Link>
+                    <Link href="/" className="font-bold">Add</Link>
                 </Button>
             </div>
-            <Separator className="mb-2 mt-4"/>
-            <SearchBar path="/users" />
             <Separator className="mb-2 mt-2"/>
             <Table>
-                <TableCaption>List of Users.</TableCaption>
+                <TableCaption>List of Attendees.</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead>Image</TableHead>
@@ -68,8 +66,8 @@ export function AttendeeTable({attendees}: Props) {
                                 <Button variant="indigo" className="mr-2">
                                     <Link href={`/attendees/${attendee.eventId}/${attendee.userId}/detail`} >Detail</Link>
                                 </Button>
-                                <DeleteAttendeeButton name={attendee.userName} eventId={attendee.eventId} userId={attendee.userId} />
-                                <Button variant="back" className="mr-2">
+                                <DeleteAttendeeButton username={attendee.userName} eventName={attendee.eventName} eventId={attendee.eventId} userId={attendee.userId} />
+                                <Button variant="back" className="m-2">
                                     <Link href={`/attendees/${attendee.eventId}/${attendee.userId}/edit`} >Edit</Link>
                                 </Button>
                             </TableCell>

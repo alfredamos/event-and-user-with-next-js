@@ -1,6 +1,6 @@
 import { Attendee } from "@/generated/prisma/client";
 import { Status } from "@/generated/prisma/enums";
-import { AttendeeUncheckedCreateInput } from "@/generated/prisma/models";
+import {AttendeeUncheckedCreateInput, AttendeeUncheckedUpdateInput} from "@/generated/prisma/models";
 import {IAttendeeService} from "@/servers/services/iattendee.service";
 import {AttendeeResponse, toAttendeeResponse} from "../dto/attendeeRequest.dto";
 import {ResponseMessage} from "../utils/responseMessage.util";
@@ -36,7 +36,7 @@ class AttendeeService implements IAttendeeService {
         return new ResponseMessage("Attendee deleted successfully!", "success", StatusCodes.OK);
     }
 
-    async editAttendeeById(eventId: string, userId: string, request: Attendee): Promise<ResponseMessage> {
+    async editAttendeeById(eventId: string, userId: string, request: AttendeeUncheckedUpdateInput): Promise<ResponseMessage> {
         //----> Check if attendee exists.
         await this.getOneAttendee(eventId, userId);
 

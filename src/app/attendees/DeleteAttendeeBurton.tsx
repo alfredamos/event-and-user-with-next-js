@@ -5,12 +5,13 @@ import {DeleteActionButton} from "@/components/users/DeleteActionButton";
 import {deleteAttendeesByIdAction} from "@/app/actions/attendee.action";
 
 type Props = {
-    name: string;
+    username: string;
     eventId: string;
+    eventName: string;
     userId: string;
 }
 
-export function DeleteAttendeeButton({ eventId, name, userId }: Props) {
+export function DeleteAttendeeButton({ eventId, eventName, username, userId }: Props) {
     const router = useRouter();
 
     const onCancel = () => {
@@ -23,6 +24,6 @@ export function DeleteAttendeeButton({ eventId, name, userId }: Props) {
     }
 
     return (
-        <DeleteActionButton onCancel={onCancel} onSubmit={onSubmit} message={`Do you really want to delete this user : ${name}?`}/>
+        <DeleteActionButton onCancel={onCancel} onSubmit={onSubmit} message={`Do you really want to delete the user : ${username} from the event ${eventName}?`}/>
     );
 }

@@ -1,20 +1,18 @@
-import { EventCreateInput } from "@/generated/prisma/models";
-import {Event} from "@/generated/prisma/client";
+import {EventCreateInput, EventUncheckedUpdateInput} from "@/generated/prisma/models";
 import {IEventService} from "@/servers/services/ievent.service";
 import {EventDto, toEventDto} from "../dto/event.dto";
 import {ResponseMessage} from "../utils/responseMessage.util";
 import {validateWithZodSchema} from "../validations/zodSchema.validation";
-import {eventSchema} from "../validations/event.validation";
+import {eventCreateSchema, eventUpdateSchema} from "../validations/event.validation";
 import catchError from "http-errors";
 import {StatusCodes} from "http-status-codes";
 import {prisma} from "@/servers/db/prisma";
-import {fromUserToUserDto} from "@/servers/dto/user.dto";
 
 class EventService implements IEventService {
 
     async createEvent(request: EventCreateInput): Promise<EventDto> {
         //----> validate inputs.
-        if (!validateWithZodSchema(eventSchema, request)) {
+        if (!validateWithZodSchema(eventCreateSchema, request)) {
             throw catchError(StatusCodes.BAD_REQUEST, "Invalid event inputs!");
         }
 
@@ -39,12 +37,18 @@ class EventService implements IEventService {
         return new ResponseMessage("Event deleted successfully!", "success", StatusCodes.OK);
     }
 
-    async editEventById(id: string, event: Event): Promise<ResponseMessage> {
+    async editEventById(id: string, event: EventUncheckedUpdateInput): Promise<ResponseMessage> {
+        //----> validate inputs.
+        if (!validateWithZodSchema(eventUpdateSchema, event)) {
+            throw catchError(StatusCodes.BAD_REQUEST, "Invalid event inputs!");
+        }
+
         //----> check if event exists.
         await this.getOneEvent(id);
 
+
         //----> convert a date to a date object.
-        event.date = new Date(event.date);
+        event.date = new Date(event.date as string);
 
         //----> update event in a database.
         await prisma.event.update({where: {id}, data: event});
