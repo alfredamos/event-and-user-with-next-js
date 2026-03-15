@@ -4,49 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Refactor attendee action, attendee card, attendee card.">
-      <change afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeAddForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/attendees/add/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servers/utils/emptySession.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servers/utils/emptyTokenJwt.ts" afterDir="false" />
+    <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Refactor attendees, events and users pages.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/change-password/change-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/change-password/change-password-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/edit-profile/edit-profile-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/edit-profile/edit-profile-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/login-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/signup/signup-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/signup/signup-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/actions/attendee.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/actions/attendee.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/actions/auth.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/actions/auth.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/adminItems.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/adminItems.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/AttendeeTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/AttendeeTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/DeleteAttendeeBurton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/DeleteAttendeeBurton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeEditForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/by-event-id/[eventId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/by-event-id/[eventId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/by-status/[status]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/by-status/[status]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/by-user-id/[userId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/by-user-id/[userId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/EventCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/EventCreateForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventCreateForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/EventListCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventListCards.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/EventTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/EventUpdateForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventUpdateForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/[id]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/[id]/detail/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/[id]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/[id]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/add/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/events/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/users/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/users/UserTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/users/[id]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/users/[id]/detail/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/MenuDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/MenuDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/services/attendee.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/services/attendee.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/validations/attendee.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/validations/attendee.validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DeleteResourceButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DeleteResourceButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +166,7 @@
       <workItem from="1773408143082" duration="19178000" />
       <workItem from="1773479418827" duration="18090000" />
       <workItem from="1773580971855" duration="1384000" />
-      <workItem from="1773582521741" duration="1606000" />
+      <workItem from="1773582521741" duration="2991000" />
     </task>
     <task id="LOCAL-00001" summary="scaffold a next-js for managing users, events and attendees.">
       <option name="closed" value="true" />
@@ -336,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773452829405</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Refactor attendees, events and users pages.">
+      <option name="closed" value="true" />
+      <created>1773584892816</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1773584892817</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,7 +328,8 @@
     <MESSAGE value="Add attendee form, create and update attendee in from end" />
     <MESSAGE value="Add alert and alert-dialog." />
     <MESSAGE value="Refactor attendee action, attendee card, attendee card." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor attendee action, attendee card, attendee card." />
+    <MESSAGE value="Refactor attendees, events and users pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor attendees, events and users pages." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
