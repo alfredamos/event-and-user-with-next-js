@@ -23,7 +23,17 @@ type Props = {
 export function UserTable({users}: Props) {
     //----> Check for an empty array of customers.
     if (users?.length === 0) {
-        return <div className="h-dvh flex justify-center items-center"><h1 className="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no users to display at this time!</h1></div>
+        return(<div className="h-dvh flex justify-center items-center gap-2">
+            <h1 className="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">
+                <span className="m-2">There are no users to display at this time!</span>
+                <Button size="lg" variant="indigo">
+                    <Link href="/signup" className="font-bold">
+                        Add New User
+                    </Link>
+                </Button>
+            </h1>
+
+        </div>);
     }
 
     return (
@@ -73,7 +83,7 @@ export function UserTable({users}: Props) {
                             <ChangeUserRole email={user.email}/>
                             <Button variant="back" className="mr-2">
                                 <Link href={`/attendees/by-user-id/${user.id}`}>
-                                    Events
+                                   Attendees
                                 </Link>
                             </Button>
                         </TableCell>

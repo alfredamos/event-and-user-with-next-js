@@ -9,18 +9,19 @@ type Props = {
     eventId: string;
     eventName: string;
     userId: string;
+    isAdmin: boolean;
 }
 
-export function DeleteAttendeeButton({ eventId, eventName, username, userId }: Props) {
+export function DeleteAttendeeButton({ eventId, eventName, isAdmin, username, userId }: Props) {
     const router = useRouter();
 
     const onCancel = () => {
-        router.push("/attendees");
+        router.push(isAdmin? "/attendees" : `/attendees/by-user-id/${userId}`);
     }
 
     const onSubmit = async () => {
         await deleteAttendeesByIdAction(eventId, userId);
-        router.push("/users");
+        router.refresh();
     }
 
     return (

@@ -1,6 +1,6 @@
 "use client"
 
-import {redirect} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form} from "@/components/ui/form";
@@ -13,10 +13,11 @@ import {SelectWithLabel} from "@/components/form-elements/SelectWithLabel";
 import {Separator} from "@/components/ui/separator";
 
 export default function SignupForm() {
+    const router = useRouter();
     async function onSubmit(values: SignupUser) {
         await signupUserAction(values);
 
-        redirect("/")
+        router.refresh();
     }
 
     const defaultValues: SignupUser = {

@@ -27,6 +27,8 @@ import {Role, TokenType, User} from "@/generated/prisma/client";
 import {tokenService} from "@/servers/services/token.service";
 import {AuthParam} from "@/servers/utils/authParam.util";
 import {TokenUncheckedCreateInput} from "@/generated/prisma/models/Token";
+import {emptySession} from "@/servers/utils/emptySession";
+import {emptyTokenJwt} from "@/servers/utils/emptyTokenJwt";
 
 class AuthService implements IAuthService {
     async changeUserPassword(request: ChangeUserPassword): Promise<ResponseMessage> {
@@ -115,6 +117,11 @@ class AuthService implements IAuthService {
         //----> Get user session.
         const session = await this.getUserSession();
 
+        //----> Check for empty session.
+        if(!session){
+            return new UserDto();
+        }
+
         //----> Get the current user.
         const user = await this.getOneUserByEmail(session.email);
         return fromUserToUserDto(user!)
@@ -141,6 +148,11 @@ class AuthService implements IAuthService {
         //----> Get user session.
        const session = await this.getUserSession();
 
+       //----> Check for empty session.
+        if(!session){
+            return emptySession;
+        }
+
        //----> Revoke all valid tokens associated with this user.
        await tokenService.revokeAllValidTokensByUserId(session.id);
 
@@ -149,15 +161,25 @@ class AuthService implements IAuthService {
        await this.deleteCookie(AuthParam.refreshTokenName, AuthParam.refreshTokenPath);
 
        //----> Send back response.
-        return new Session();
+        return emptySession;
     }
 
     async refreshUserToken(): Promise<Session> {
         //----> Get refresh-token.
         const token = await this.getCookie(AuthParam.refreshTokenName);
 
+        //----> Check for empty refresh-token.
+        if(!token){
+            return emptySession;
+        }
+
         //----> Validate refresh-token.
         const tokenJwt = this.validateToken(token);
+
+        //----> Check for invalid refresh-token.
+        if(!tokenJwt){
+            return emptySession;
+        }
 
         //----> Generate tokens and cookies.
         return this.generateTokensAndCookies(tokenJwt);
@@ -218,8 +240,18 @@ class AuthService implements IAuthService {
         //----> Get cookie.
        const token = await this.getCookie(AuthParam.accessTokenName);
 
+       //----> Check for empty token
+        if(!token){
+            return emptySession;
+        }
+
        //----> Validate token.
        const tokenJwt = this.validateToken(token);
+
+        //----> Check for invalid token.
+        if(!tokenJwt){
+            return emptySession;
+        }
 
        //----> Make a session object.
        return this.makeSession(tokenJwt, token);
@@ -247,17 +279,17 @@ class AuthService implements IAuthService {
     }
 
     private validateToken(token: string){
-        //----> Check if token is valid.
+        //----> Check for null token.
         if(!token){
-            throw catchError(StatusCodes.UNAUTHORIZED, "Invalid token!");
+            return emptyTokenJwt;
         }
 
         //----> Validate token.
-       const jwtPayload =  jwt.verify(token, process.env.JWT_TOKEN_KEY!) as JwtPayload;
+        const jwtPayload =  jwt.verify(token, process.env.JWT_TOKEN_KEY!) as JwtPayload;
 
         //----> Check if token is expired.
         if(!jwtPayload){
-            throw catchError(StatusCodes.UNAUTHORIZED, "Invalid token!");
+            return emptyTokenJwt;
         }
 
         //----> Return tokenJwt.
@@ -323,7 +355,7 @@ class AuthService implements IAuthService {
 
         //----> Check if cookie exists.
         if(!cookieValue){
-            throw catchError(StatusCodes.UNAUTHORIZED, "Invalid token!");
+           return "";
         }
 
         //----> Send back the cookie-value.

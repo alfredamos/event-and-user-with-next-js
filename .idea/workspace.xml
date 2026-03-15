@@ -4,14 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Add alert and alert-dialog.">
-      <change afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/AttendeeCard.tsx" afterDir="false" />
+    <list default="true" id="c1345032-650f-4b96-9a7d-32c6f51bb3d2" name="Changes" comment="Refactor attendee action, attendee card, attendee card.">
+      <change afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeAddForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/attendees/add/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servers/utils/emptySession.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servers/utils/emptyTokenJwt.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/change-password/change-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/change-password/change-password-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/edit-profile/edit-profile-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/edit-profile/edit-profile-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/login-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/signup/signup-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/signup/signup-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/actions/attendee.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/actions/attendee.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/actions/auth.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/actions/auth.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/adminItems.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/adminItems.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/AttendeeTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/AttendeeTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/DeleteAttendeeBurton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/DeleteAttendeeBurton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/detail/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/dto/attendeeRequest.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/dto/attendeeRequest.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servers/dto/fromEditUserToUser.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/dto/fromEditUserToUser.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/AttendeeEditForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/[eventId]/[userId]/edit/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/by-event-id/[eventId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/by-event-id/[eventId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/by-status/[status]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/by-status/[status]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/by-user-id/[userId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/by-user-id/[userId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/attendees/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/attendees/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/EventCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/EventCreateForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventCreateForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/EventListCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventListCards.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/EventTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/EventUpdateForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/EventUpdateForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/[id]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/[id]/detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/[id]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/[id]/edit/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/events/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/users/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/users/UserTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/users/[id]/detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/users/[id]/detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/MenuDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/MenuDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servers/services/attendee.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/services/attendee.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servers/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servers/validations/attendee.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/servers/validations/attendee.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/DeleteResourceButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DeleteResourceButton.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +54,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="184" />
+    <option name="cachedIndexableFilesCount" value="189" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -60,36 +95,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.preferred.runtime.type.id": "node",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Users/alfre/OneDrive/Backends/NextJs/event-and-user-with-next-js/src/app/events",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.Next.js: server-side.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\alfre\\OneDrive\\Backends\\NextJs\\event-and-user-with-next-js\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alfre/OneDrive/Backends/NextJs/event-and-user-with-next-js/src/app/attendees/[eventId]/[userId]/edit&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\alfre\\OneDrive\\Backends\\NextJs\\event-and-user-with-next-js\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -108,6 +143,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alfre\OneDrive\Backends\NextJs\event-and-user-with-next-js\src\app\attendees\[eventId]\[userId]\edit" />
       <recent name="C:\Users\alfre\OneDrive\Backends\NextJs\event-and-user-with-next-js\src\app\events" />
       <recent name="C:\Users\alfre\OneDrive\Backends\NextJs\event-and-user-with-next-js\src\utils" />
     </key>
@@ -167,7 +203,10 @@
       <workItem from="1773233846452" duration="9596000" />
       <workItem from="1773306206146" duration="33173000" />
       <workItem from="1773391063438" duration="2459000" />
-      <workItem from="1773408143082" duration="19060000" />
+      <workItem from="1773408143082" duration="19178000" />
+      <workItem from="1773479418827" duration="18090000" />
+      <workItem from="1773580971855" duration="1384000" />
+      <workItem from="1773582521741" duration="1606000" />
     </task>
     <task id="LOCAL-00001" summary="scaffold a next-js for managing users, events and attendees.">
       <option name="closed" value="true" />
@@ -289,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773450678143</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Refactor attendee action, attendee card, attendee card.">
+      <option name="closed" value="true" />
+      <created>1773452829405</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1773452829405</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +359,8 @@
     <MESSAGE value="Add attendee form, create and update attendee in fromtend" />
     <MESSAGE value="Add attendee form, create and update attendee in from end" />
     <MESSAGE value="Add alert and alert-dialog." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add alert and alert-dialog." />
+    <MESSAGE value="Refactor attendee action, attendee card, attendee card." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor attendee action, attendee card, attendee card." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

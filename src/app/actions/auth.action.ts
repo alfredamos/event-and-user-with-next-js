@@ -58,7 +58,8 @@ export async function getUserSessionAction():Promise<Session>{
     try {
         return await authService.getUserSession();
     }catch (error){
-        throw error;
+        console.log("Error in getUserSessionAction : ", error);
+        return new Session();
     }
 }
 

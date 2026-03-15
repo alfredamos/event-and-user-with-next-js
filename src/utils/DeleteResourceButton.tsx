@@ -14,7 +14,7 @@ export function DeleteResourceButton({ action, id, name, path }: Props) {
     const router = useRouter();
 
     const onCancel = () => {
-        router.push(path);
+        router.refresh();
     }
 
     const onSubmit = async () => {

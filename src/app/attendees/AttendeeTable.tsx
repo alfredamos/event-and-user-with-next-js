@@ -2,18 +2,29 @@ import {AttendeeResponse} from "@/servers/dto/attendeeRequest.dto";
 import {Separator} from "@/components/ui/separator";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import SearchBar from "@/components/users/SearchBar";
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {DeleteAttendeeButton} from "@/app/attendees/DeleteAttendeeBurton";
+import {formattedDate} from "@/utils/formattedDate";
 
 type Props = {
-    attendees: AttendeeResponse[]
+    attendees: AttendeeResponse[];
+    isAdmin: boolean;
 }
 
-export function AttendeeTable({attendees}: Props) {
+export function AttendeeTable({attendees, isAdmin}: Props) {
     //----> Check for an empty array of customers.
     if (attendees?.length === 0) {
-        return <div className="h-dvh flex justify-center items-center"><h1 className="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no attendee-events to display at this time!</h1></div>
+        return(<div className="h-dvh flex justify-center items-center gap-2">
+            <h1 className="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">
+            <span className="m-2">There are no attendee-events to display at this time!</span>
+            <Button size="lg" variant="indigo">
+                <Link href="/attendees/add" className="font-bold">
+                    Add New Attendee
+                </Link>
+            </Button>
+        </h1>
+
+        </div>);
     }
 
     return (
@@ -22,7 +33,7 @@ export function AttendeeTable({attendees}: Props) {
             <div className="flex items-center justify-between">
                 <span className="font-bold">Add New Attendee</span>
                 <Button asChild size="lg" >
-                    <Link href="/" className="font-bold">Add</Link>
+                    <Link href="/attendees/add" className="font-bold">Add</Link>
                 </Button>
             </div>
             <Separator className="mb-2 mt-2"/>
@@ -46,7 +57,7 @@ export function AttendeeTable({attendees}: Props) {
                 </TableHeader>
                 <TableBody>
                     {attendees.map((attendee) => (
-                        <TableRow key={attendee.eventId}>
+                        <TableRow key={`${attendee.eventId}-${attendee.userId}`}>
                             <TableCell><img
                                 src={attendee.userImage}
                                 height={80}
@@ -56,7 +67,7 @@ export function AttendeeTable({attendees}: Props) {
                             <TableCell>{attendee.eventName}</TableCell>
                             <TableCell>{attendee.description}</TableCell>
                             <TableCell>{attendee.location}</TableCell>
-                            <TableCell>{attendee.date.toString()}</TableCell>
+                            <TableCell>{formattedDate(attendee.date)}</TableCell>
                             <TableCell>{attendee.status}</TableCell>
                             <TableCell>{attendee.userName}</TableCell>
                             <TableCell>{attendee.userEmail}</TableCell>
@@ -66,7 +77,7 @@ export function AttendeeTable({attendees}: Props) {
                                 <Button variant="indigo" className="mr-2">
                                     <Link href={`/attendees/${attendee.eventId}/${attendee.userId}/detail`} >Detail</Link>
                                 </Button>
-                                <DeleteAttendeeButton username={attendee.userName} eventName={attendee.eventName} eventId={attendee.eventId} userId={attendee.userId} />
+                                <DeleteAttendeeButton isAdmin={isAdmin} username={attendee.userName} eventName={attendee.eventName} eventId={attendee.eventId} userId={attendee.userId} />
                                 <Button variant="back" className="m-2">
                                     <Link href={`/attendees/${attendee.eventId}/${attendee.userId}/edit`} >Edit</Link>
                                 </Button>

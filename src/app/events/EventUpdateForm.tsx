@@ -1,6 +1,6 @@
 "use client"
 
-import {redirect, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {FieldErrors, SubmitHandler, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {eventUpdateSchema, EventUpdate} from "@/servers/validations/event.validation";
@@ -25,7 +25,7 @@ export function EventUpdateForm({action, event, formLabel}: Props) {
         if(formLabel === "Edit") values.id = event.id;
         console.log("At point 2 in event-form, values", values);
         await action(values.id, values);
-        redirect("/events")
+        router.refresh();
     }
 
     const onError: SubmitHandler<FieldErrors<EventUpdate>> = (errors) => {

@@ -12,9 +12,10 @@ import {formattedDate} from "@/utils/formattedDate";
 type Props = {
     event: EventDto;
     userId: string;
+    isAdmin: boolean;
 }
 
-export function EventCard({event, userId}: Props) {
+export function EventCard({event, isAdmin, userId}: Props) {
     const router = useRouter();
     const addEvent = async (event: EventDto) => {
         const newAttendee: AttendeeUncheckedCreateInput = {
@@ -24,7 +25,7 @@ export function EventCard({event, userId}: Props) {
 
         //----> Create a new attendee.
         await  createAttendeesAction(newAttendee);
-        router.push("/attendees");
+        router.push(isAdmin ? "/attendees" : `/attendees/by-user-id/${userId}`);
 
     }
 

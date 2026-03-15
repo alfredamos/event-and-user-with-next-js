@@ -31,7 +31,7 @@ export function MenuDropdown({ title, subTitle, items}: Props) {
                 <DropdownMenuSeparator />
                 {
                     items.map(item => (
-                        <NavLink key={item.label} href={item.href} label={item.label}/>
+                        <NavLink key={`${item.label}-${item.href}`} href={item.href} label={item.label}/>
                     ))
 
                 }

@@ -8,10 +8,10 @@ export default async function DetailEventPage({params}:{ params: Promise<{id: st
     const session = await getUserSessionAction();
 
     if (!session?.isLoggedIn) {
-        return <div>You are not logged in, please login!</div>
+        return <div className="h-dvh flex justify-center items-center">You are not logged in, please login!</div>
     }
 
     return(
-        <EventCard event={event} userId={session.id} />
+        <EventCard event={event} userId={session.id} isAdmin={session.isAdmin} />
     );
 }

@@ -16,7 +16,17 @@ type Props = {
 export function EventTable({events}: Props) {
     //----> Check for an empty array of customers.
     if (events?.length === 0) {
-        return <div className="h-dvh flex justify-center items-center"><h1 className="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no events to display at this time!</h1></div>
+        return(<div className="h-dvh flex justify-center items-center gap-2">
+            <h1 className="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">
+                <span className="m-2">There are no events to display at this time!</span>
+                <Button size="lg" variant="indigo">
+                    <Link href="/events/add" className="font-bold">
+                        Add New Event
+                    </Link>
+                </Button>
+            </h1>
+
+        </div>);
     }
 
     return (
@@ -63,6 +73,11 @@ export function EventTable({events}: Props) {
                                 <Button variant="back" className="m-2">
                                     <Link href={`/events/${event.id}/edit`}>
                                         Edit
+                                    </Link>
+                                </Button>
+                                <Button variant="indigo" className="m-2">
+                                    <Link href={`/attendees/by-event-id/${event.id}`}>
+                                        Attendees
                                     </Link>
                                 </Button>
                             </TableCell>

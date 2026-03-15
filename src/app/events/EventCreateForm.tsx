@@ -1,6 +1,6 @@
 "use client"
 
-import {redirect, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {FieldErrors, SubmitHandler, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {eventCreateSchema, EventCreate} from "@/servers/validations/event.validation";
@@ -17,14 +17,10 @@ type Props = {
 };
 
 export function EventCreateForm({action, event, formLabel}: Props) {
-    console.log("In event-form, formLabel", formLabel);
-    console.log("In event-form, event", event);
     const router = useRouter();
     async function onSubmit(values: EventCreate) {
-        console.log("At point 1 in event-form, values", values);
-        console.log("At point 2 in event-form, values", values);
         await action(values);
-        redirect("/events")
+        router.refresh();
     }
 
     const onError: SubmitHandler<FieldErrors<EventCreate>> = (errors) => {

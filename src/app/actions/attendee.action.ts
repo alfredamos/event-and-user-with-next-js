@@ -8,9 +8,13 @@ import catchError from "http-errors";
 import {StatusCodes} from "http-status-codes";
 
 export async function createAttendeesAction(request: AttendeeUncheckedCreateInput){
+    //----> Get user session.
+    const session = await getUserSessionAction();
+
     //----> Create a new attendee.
     try {
-        return await attendeeService.createAttendee(request);
+        await attendeeService.createAttendee(request);
+        redirect(session?.isAdmin ? "/attendees" : `/attendees/by-user-id/${request.userId}`)
     }catch (error) {
         throw error
     }

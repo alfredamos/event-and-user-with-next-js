@@ -5,7 +5,7 @@ import {IAttendeeService} from "@/servers/services/iattendee.service";
 import {AttendeeResponse, toAttendeeResponse} from "../dto/attendeeRequest.dto";
 import {ResponseMessage} from "../utils/responseMessage.util";
 import {validateWithZodSchema} from "@/servers/validations/zodSchema.validation";
-import {attendeeSchema} from "@/servers/validations/attendee.validation";
+import {attendeeCreateSchema, attendeeEditSchema} from "@/servers/validations/attendee.validation";
 import catchError from "http-errors";
 import {StatusCodes} from "http-status-codes";
 import {prisma} from "@/servers/db/prisma";
@@ -14,7 +14,7 @@ import {capitalizeFirstLetter} from "@/servers/utils/capitalizeFirstLetter.util"
 class AttendeeService implements IAttendeeService {
     async createAttendee(request: AttendeeUncheckedCreateInput): Promise<AttendeeResponse> {
         //----> Validate inputs.
-        if (!validateWithZodSchema(attendeeSchema, request)){
+        if (!validateWithZodSchema(attendeeCreateSchema, request)){
             throw catchError(StatusCodes.BAD_REQUEST, "Invalid attendee inputs!");
         }
 
@@ -37,6 +37,12 @@ class AttendeeService implements IAttendeeService {
     }
 
     async editAttendeeById(eventId: string, userId: string, request: AttendeeUncheckedUpdateInput): Promise<ResponseMessage> {
+        //----> Validate inputs.
+        if (!validateWithZodSchema(attendeeEditSchema, request)){
+            throw catchError(StatusCodes.BAD_REQUEST, "Invalid attendee inputs!");
+        }
+
+
         //----> Check if attendee exists.
         await this.getOneAttendee(eventId, userId);
 

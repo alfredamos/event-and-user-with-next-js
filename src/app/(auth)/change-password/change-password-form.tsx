@@ -1,7 +1,7 @@
 "use client"
 
 import {InputWithLabel} from "@/components/form-elements/InputWithLabel";
-import {redirect, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {ChangeUserPassword, changeUserPasswordSchema} from "@/servers/validations/auth.validation";
 import {changeUserPasswordAction} from "@/app/actions/auth.action";
 import {useForm} from "react-hook-form";
@@ -18,7 +18,7 @@ export default function ChangePasswordForm({email}: Props) {
     const router = useRouter();
     async function onSubmit(values: ChangeUserPassword) {
         await changeUserPasswordAction(values);
-        redirect("/")
+        router.refresh();
     }
 
     const defaultValues: ChangeUserPassword = {

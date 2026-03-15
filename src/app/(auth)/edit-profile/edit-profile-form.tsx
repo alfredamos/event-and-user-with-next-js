@@ -1,7 +1,7 @@
 "use client"
 
 import {editProfileUserSchema, EditUserProfile,} from "@/servers/validations/auth.validation";
-import {redirect, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {Gender} from "@prisma/client";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -21,7 +21,7 @@ export default function EditProfileForm({user}: Props) {
     const router = useRouter();
     async function onSubmit(values: EditUserProfile) {
         await editUserProfileAction(values);
-        redirect("/")
+        router.refresh()
     }
 
     const defaultValues: EditUserProfile = {

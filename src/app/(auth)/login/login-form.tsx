@@ -7,7 +7,7 @@ import {Form} from "@/components/ui/form";
 import {LoginUser, loginUserSchema} from "@/servers/validations/auth.validation";
 import {loginUserAction} from "@/app/actions/auth.action";
 import {Button} from "@/components/ui/button";
-import {redirect} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {useAuthContext} from "@/hooks/useAuthContext";
 import {useLocalStorage} from "@/hooks/useLocalStorage";
 import {LocalStorageParam} from "@/servers/utils/LocalStorageParam";
@@ -16,7 +16,8 @@ import {UserModel} from "@/servers/models/user.model";
 
 export default function LoginForm(){
     const {setAuthSession} = useAuthContext();
-    const {setLocalStorage} = useLocalStorage<UserModel>()
+    const {setLocalStorage} = useLocalStorage<UserModel>();
+    const router = useRouter();
 
     async function onSubmit(values: LoginUser) {
         console.log("In login-form, values", values);
@@ -34,8 +35,8 @@ export default function LoginForm(){
         //----> Set local-storage.
         setLocalStorage(LocalStorageParam.authSession, response as unknown as UserModel);
 
+        router.push("/");
 
-        redirect("/")
     }
 
     const defaultValues: LoginUser = {
@@ -50,7 +51,7 @@ export default function LoginForm(){
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="bg-gray-50 dark:text-black dark:bg-black text-slate-800 max-w-sm items-center mx-auto rounded-xl shadow-xl py-6 px-10 mt-2">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="bg-gray-50 dark:text-black dark:bg-black text-slate-800 max-w-sm items-center mx-auto rounded-xl shadow-xl py-6 px-10 mt-2" method="POST">
                 <h4 className="font-bold text-slate-800 text-center text-xl mb-2 dark:text-white">
                     Login Form
                 </h4>

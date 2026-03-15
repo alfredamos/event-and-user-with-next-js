@@ -2,27 +2,35 @@
 
 import {EventDto} from "@/servers/dto/event.dto";
 import {Button} from "@/components/ui/button";
-import {redirect} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {AttendeeUncheckedCreateInput} from "@/generated/prisma/models/Attendee";
 import {createAttendeesAction} from "@/app/actions/attendee.action";
 import Link from "next/link";
 import {formattedDate} from "@/utils/formattedDate";
+import {useAuthContext} from "@/hooks/useAuthContext";
+import {Session} from "@/servers/models/session.model";
 
 type Props = {
     events: EventDto[];
-    userId: string;
+    session: Session;
 }
 
-export function EventListCards({events, userId}: Props) {
-    const addEvent = async (event: EventDto) => {
+export function EventListCards({events, session}: Props) {
+    const router = useRouter();
+    const {setAuthSession} = useAuthContext();
+
+    const addAttendee = async (event: EventDto) => {
+        //----> Update the auth session.
+        setAuthSession(session)
+
         const newAttendee: AttendeeUncheckedCreateInput = {
             eventId: event.id,
-            userId
+            userId: session?.id as string
         }
 
         //----> Create a new attendee.
         await  createAttendeesAction(newAttendee);
-        redirect("/attendees");
+        router.refresh();
 
     }
 
@@ -38,9 +46,21 @@ export function EventListCards({events, userId}: Props) {
                                 <p className="text-gray-600">Date: {formattedDate(new Date(event.date))}</p>
                                 <p className="text-gray-600">Location: {event.location}</p>
                                 <div className="flex flex-col md:flex-row gap-2 items-center mt-2">
-                                    <Button variant="success" className="my-4 w-full md:flex-1" size="lg" type="button" asChild>
-                                        <Link href={`/events/${event.id}/detail`}>Detail</Link></Button>
-                                    <Button variant="indigo" className="my-4 w-full md:flex-1" size="lg" type="button" onClick={() => addEvent(event)}>Register</Button>
+
+                                    {
+                                        session?.isLoggedIn ? (
+                                            <>
+
+                                            <Button variant="success" className="my-4 w-full md:flex-1" size="lg" type="button" asChild>
+                                                <Link href={`/events/${event.id}/detail`}>Detail</Link>
+                                            </Button>
+                                            <Button variant="indigo" className="my-4 w-full md:flex-1" size="lg" type="button" onClick={() => addAttendee(event)}>
+                                            Register
+                                        </Button>
+                                            </>
+                                        ): (<div className="text-indigo-300 hover:text-rose-300"><Link href="/login">Please Login</Link></div>)
+                                    }
+
                                 </div>
 
                             </div>
